@@ -18,7 +18,6 @@
                             <PropertyValue Property="Label" String="UploadFile"/>
                             <PropertyValue Property="Action" String="com.sap.gateway.srvd.zfreightorder_service.v0001.uploadfile(com.sap.gateway.srvd.zfreightorder_service.v0001.ZC_FREIGHTORDERType)"/>
                             <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
-                            <Annotation Term="UI.Hidden"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Carrier"/>
@@ -92,6 +91,22 @@
                             <PropertyValue Property="Value" Path="Fileobjectid"/>
                         </Record>
                     </Collection>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Freight Order Header"/>
+                            <PropertyValue Property="ID" String="idIdentification"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Pdfviewer">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection/>
+                        </PropertyValue>
+                    </Record>
                 </Annotation>
             </Annotations>
             <Annotations Target="SAP__self.Container/ZC_FREIGHTORDER">

@@ -150,7 +150,7 @@
                 "header": {
                   "actions": {
                     "FileHandle": {
-                      "press": "freightorderattachmgt.ext.fileHandle.FileHandle.uploadfiles",
+                      "press": ".extension.freightorderattachmgt.ext.controller.FoController.uploadfiles",
                       "visible": true,
                       "enabled": true,
                       "requiresSelection": false,
@@ -161,10 +161,22 @@
                       }
                     }
                   }
+                },
+                "body": {
+                  "sections": {}
                 }
               },
               "sectionLayout": "Tabs"
             }
+          }
+        }
+      }
+    },
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {
+          "sap.fe.templates.ObjectPage.ObjectPageController#freightorderattachmgt::ZC_FREIGHTORDERObjectPage": {
+            "controllerName": "freightorderattachmgt.ext.controller.FoController"
           }
         }
       }
