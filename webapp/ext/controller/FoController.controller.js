@@ -31,14 +31,31 @@ sap.ui.define(['sap/ui/core/mvc/ControllerExtension','sap/ui/core/Fragment',"sap
 		
 		},
 
-		onUploadSet: function(oEvent) {
+		onUploadSet:  function(oEvent) {
 			var oFileUploader = this.pDialog.getContent('uploadSet')[0];
 			var oFile = oFileUploader.getItems()[0].getFileObject();
 			var sFileName = oFile.name;
 			var iFileLen = oFile.size;
 			var sFileType = oFile.type;
 			console.log(this.pdf_content);
-			var view1 = this.getView();
+			const oExtensionAPI = this.base.getExtensionAPI();
+			// var view1 = this.getView();
+			var oModel = oExtensionAPI.getModel();
+			const sFunctionname = "uploadfile";
+			var sPath = this.getView().getBindingContext().getPath();
+
+			var oFileCont = {"filename":sFileName,"mime_type": sFileType,"length": iFileLen,"stream":this.pdf_content }
+			 sPath = sPath.concat('/uploadfile(...)');
+			// const oFunction = oModel.bindContext(sPath);
+			
+
+			// const oFunction = oModel.bindContext(`/${sFunctionname}(...)`);
+			// oFunction.setParameter(sFileName,sFileType,iFileLen,this.pdf_content);
+			const oFunction = oModel.bindContext(sPath,oFileCont);
+
+		   oFunction.execute();
+		   const oContext = oFunction.getBoundContext();
+			
 			this.pDialog.close();		   
 			  alert("upload set triggered");
 			  /* TODO:Call to OData */
